@@ -38,6 +38,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', functio
 
   $scope.signIn = function(email, password){
     $scope.showLoginError = false;
+    $scope.registrationSuccess = false;
     $http.get('/api/customer/'+email).then(function(response){
 
       if(response.data[0]){
@@ -66,11 +67,11 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', functio
   $scope.register = function(customer){
     $http.post('/api/customer',customer).then(function(response){
       if(response.data.msg != 'Failed to add customer'){
-        $scope.showRegistrationForm = false;
+        $scope.registrationSuccess = true;
+        $location.path('/sign-in');
       }
       else{
         console.log(response);
-        $scope.showRegistrationForm = true;
       }
     });
   }

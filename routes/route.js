@@ -174,7 +174,7 @@ router.get('/stores/', (req, res, next) => {
 
 // get stores
 router.get('/stores/:city', (req, res, next) => {
-	Store.find({city:req.params.city},(err, store) => {
+	Store.find({city:new RegExp('^'+req.params.city+'$','i')},(err, store) => {
 		res.json(store);
 	});
 });
