@@ -10,7 +10,7 @@ var app = express();
 const route = require('./routes/route')
 
 //port no
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 //adding middleware - cors
 app.use(cors());
