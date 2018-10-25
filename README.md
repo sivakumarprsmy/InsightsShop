@@ -1,0 +1,2 @@
+# InfyInsightsShop
+MEAN App
