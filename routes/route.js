@@ -18,11 +18,11 @@ router.get('/books', (req, res, next) => {
 router.get('/books/:search_param', (req, res, next) => {
 	Book.find({ 
 		$or:[
-			{title: req.params.search_param}, 
-			{author: req.params.search_param},
-			{publisher: req.params.search_param},
-			{category: req.params.search_param},
-			{isbn: req.params.search_param}
+			{title: new RegExp('.*'+req.params.search_param+'.*','i')}, 
+			{author: new RegExp('.*'+req.params.search_param+'.*','i')},
+			{publisher: new RegExp('.*'+req.params.search_param+'.*','i')},
+			{category: new RegExp('.*'+req.params.search_param+'.*','i')},
+			{isbn: new RegExp('.*'+req.params.search_param+'.*','i')}
 		]},(err, books) => {
 		res.json(books);
 	});
@@ -174,7 +174,7 @@ router.get('/stores/', (req, res, next) => {
 
 // get stores
 router.get('/stores/:city', (req, res, next) => {
-	Store.find({city:new RegExp('^'+req.params.city+'$','i')},(err, store) => {
+	Store.find({city:new RegExp('.*'+req.params.city+'.*','i')},(err, store) => {
 		res.json(store);
 	});
 });
