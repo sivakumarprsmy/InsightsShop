@@ -1,0 +1,24 @@
+<div class="row">
+        <div class="col-md-10"> 
+            <br/>
+            <form class="form-inline my-2 my-lg-0 ng-pristine ng-valid">
+                    <input class="form-control mr-sm-2 ng-pristine ng-untouched ng-valid ng-empty" type="text" placeholder="Enter City Name" ng-model="city">
+                    <button class="btn btn-outline-primary" ng-click="getStores(city)">Search</button>
+            </form>
+
+            <div class="row">
+            <div class="card border-dark mb-3 mt-3 ml-3" style="max-width: 20rem;" ng-repeat="store in stores">
+                 <div class="card-header">Infy Insights Shop: Store Id#{{store.store_id}}</div>
+                 <div class="card-body">
+                   <h5 class="card-title">{{store.addr_line_1}}</h5>
+                   <div class="card-text">{{store.addr_line_2}}</div>
+                   <div class="card-text">{{store.city}}</div>
+                   <div class="card-text">{{store.state +" - "+ store.zip}}</div>
+                   
+                   <div class="card-text">{{store.country}}</div>
+                   <div class="card-text">Phone #: {{store.phone}}</div>
+                 </div>  
+         </div>
+        </div>
+      </div>
+    </div>

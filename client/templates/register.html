@@ -1,0 +1,60 @@
+<div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+                <form ng-show = "showRegistrationForm">
+                        <fieldset>
+                        <legend>Registration</legend>
+                        
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="First Name" ng-model='customer.first_name' required>
+                        </div>
+                        <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Last Name" ng-model='customer.last_name' required>
+                        </div>
+                        <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" ng-model='customer.email_id' required>
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" placeholder="Password" ng-model='customer.password' required>
+                        </div>
+                        <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="text" class="form-control" id="phone" placeholder="Phone" ng-model='customer.phone' required>
+                        </div>
+                        <div class="form-group">
+                                <label for="addressLine1">Address Line 1</label>
+                                <input type="text" class="form-control" id="addressLine1" placeholder="Building No. Street Name" ng-model='customer.addr_line_1' required>
+                        </div>
+                        <div class="form-group">
+                                <label for="addressLine2">Address Line 2</label>
+                                <input type="text" class="form-control" id="addressLine2" placeholder="Apt/Suite No." ng-model='customer.addr_line_2' required>
+                        </div>
+                        <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" id="city" placeholder="City" ng-model='customer.city' required>
+                        </div>
+                        <div class="form-group">
+                                <label for="state">State</label>
+                                <input type="text" class="form-control" id="state" placeholder="State" ng-model='customer.state' required>
+                        </div>
+                        <div class="form-group">
+                                <label for="zip">Zip</label>
+                                <input type="text" class="form-control" id="zip" placeholder="Zip" ng-model='customer.zip' required>
+                        </div>
+                        <div class="form-group">
+                                <label for="country">Country</label>
+                                <input type="text" class="form-control" id="country" placeholder="Country" ng-model='customer.country' required> 
+                        </div>
+                        <button type="submit" class="btn btn-primary" ng-click="register(customer)">Submit</button>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="col-md-3">
+            
+                </div>
+            </div>
