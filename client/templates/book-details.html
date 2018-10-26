@@ -39,7 +39,7 @@
                 <hr/>
             </div>
             <div ng-show="!reviews.length">No Customer Review Yet!</div>
-            
+            <hr/>
             <form ng-show = "isSignedIn">
             <div class="form-group">
               <h4>Write your review</h4>
@@ -55,7 +55,7 @@
             </div>
             <button type="submit" class="btn btn-outline-primary" ng-click="submitReview(review)">Submit</button>
           </form>
-          <div ng-show="!isSignedIn">*Only customers can write reviews!</div>
+          <div ng-show="!isSignedIn">**Only customers can write reviews!</div>
         </div>
         
     </div>
