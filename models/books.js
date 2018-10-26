@@ -33,6 +33,10 @@ const BookSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	rent_price:{
+		type: String,
+		required: true
+	},
 	image_url:{
 		type: String,
 		required: false
