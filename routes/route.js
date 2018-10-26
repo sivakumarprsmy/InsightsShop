@@ -179,4 +179,25 @@ router.get('/stores/:city', (req, res, next) => {
 	});
 });
 
+//add review
+router.post('/review', (req, res, next) => {
+	//logic to add books
+	let newReview = new Review({
+		title: req.body.title,
+		reviewer_name: req.body.reviewer_name,
+		review_title:req.body.review_title,
+		review_description: req.body.review_description,
+	});
+
+	newReview.save((err, review) => {
+		if(err){
+			res.json({msg: 'Failed to add review'});
+		}
+		else{
+			res.json({msg: 'Review added succesfully'});
+		}
+	});
+
+});
+
 module.exports = router;
