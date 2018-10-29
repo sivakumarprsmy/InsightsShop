@@ -2,17 +2,7 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngCookies']);
 myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', function ($scope, $http, $location, $cookies) {
 
   $scope.isSignedIn = false;
-
-  var updateView = function () {
-    $http.get('/api/books').then(function (response) {
-      $scope.books = response.data;
-      $scope.book = "";
-      $scope.hideWelcomeBanner = false;
-    });
-  };
-
-  updateView();
-
+  
   // book search 
   $scope.search = function (search_param) {
     $location.path('/book-list');
@@ -26,7 +16,6 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', functio
         $scope.books = response.data;
         $scope.book = "";
         console.log("inside search");
-        $scope.hideWelcomeBanner = true;
         $scope.noResults = false;
       }
       else{
@@ -91,15 +80,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', functio
       }
     });
   }
-  /*
-    $scope.getStores = function(){
-      $http.get('/api/stores/').then(function(response) {
-        $scope.stores = response.data; 
-      });    
   
-    }
-  */
- 
   // search stores
   $scope.getStores = function (city) {
     if (angular.isUndefined(city)) {
