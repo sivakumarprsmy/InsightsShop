@@ -1,104 +1,109 @@
 <div class="row mt-5">
-    <div class="col-md-3">
-        <img width="200" src="{{bookDetails.image_url}}"/>
-    </div>
-    <div class="col-md-6">
-        <h3>{{bookDetails.title}}</h3><div class="text-muted"> {{bookDetails.category}} </div>
-        <h5 class="mt-3"><span class="text-muted "> Author</span> {{bookDetails.author}} </h5>
-        <h6 class="mt-3 text-uppercase"><span class="text-muted ">ISBN</span> {{bookDetails.isbn}} </h6>
-        <p class="font-weight text-primary">Buy - ${{bookDetails.price}}</p>
-        <p class="font-weight text-secondary">Rent - ${{bookDetails.rent_price}}</p>
-        <p class="mt-2 font-italic">{{bookDetails.description}}</p>
-    </div>
-    <div class="col-md-3"><button type="button" class="btn btn-lg btn-block btn-outline-primary" data-toggle="modal" data-target="#signInModal" ng-click="setAction('buy')">One Click Buy</button>
-        <button type="button" class="btn btn-lg btn-block btn-outline-danger" data-toggle="modal" data-target="#signInModal" ng-click="setAction('rent')">One Click Rent</button></div>
+  <div class="col-md-3">
+    <img width="200" src="{{bookDetails.image_url}}" />
+  </div>
+  <div class="col-md-6">
+    <h3>{{bookDetails.title}}</h3>
+    <div class="text-muted"> {{bookDetails.category}} </div>
+    <h5 class="mt-3"><span class="text-muted "> Author</span> {{bookDetails.author}} </h5>
+    <h6 class="mt-3 text-uppercase"><span class="text-muted ">ISBN</span> {{bookDetails.isbn}} </h6>
+    <p class="font-weight text-primary">Buy - ${{bookDetails.price}}</p>
+    <p class="font-weight text-secondary">Rent - ${{bookDetails.rent_price}}</p>
+    <p class="mt-2 font-italic">{{bookDetails.description}}</p>
+  </div>
+  <div class="col-md-3"><button type="button" class="btn btn-lg btn-block btn-outline-primary" data-toggle="modal"
+      data-target="#signInModal" ng-click="setAction('buy')">One Click Buy</button>
+    <button type="button" class="btn btn-lg btn-block btn-outline-danger" data-toggle="modal" data-target="#signInModal"
+      ng-click="setAction('rent')">One Click Rent</button></div>
 </div>
 
 <div class="row mt-5">
-        <div class="col-sm-3">
-            <div class="rating-block">
-                <h4>Customer Reviews</h4>
-            </div>
-        </div>			
-</div>			
+  <div class="col-sm-3">
+    <div class="rating-block">
+      <h4>Customer Reviews</h4>
+    </div>
+  </div>
+</div>
 
 <div class="row">
-        <div class="col-sm-7">
-            <hr/>
-            <div class="review-block" ng-repeat="review in reviews">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <img src="/assets/avatar.png" class="img-rounded">
-                        <div class="review-block-name">{{review.reviewer_name}}</div>
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="review-block-title"><b>{{review.review_title}}</b></div>
-                        <div class="review-block-description">{{review.review_description}}</div>
-                    </div>
-                </div>
-                <hr/>
-            </div>
-            <div ng-show="!reviews.length">No Customer Review Yet!</div>
-            <hr/>
-            <form ng-show = "isSignedIn">
-            <div class="form-group">
-              <h4>Write your review</h4>
-              <hr/>
-              <div ng-show="reviewSuccess" class="alert alert-dismissible alert-success">
-                Review added succesfully!
-              </div>
-              <label for="reviewTitle">Review Title</label>
-              <input type="text" class="form-control" id="reviewTitle" placeholder="Your overall experience" ng-model="review.review_title" required>
-              <br/>
-              <label for="exampleTextarea">Description</label>
-              <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Write more..." ng-model="review.review_description" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-outline-primary" ng-click="submitReview(review)">Submit</button>
-          </form>
-          <div ng-show="!isSignedIn">**Only customers can write reviews!</div>
+  <div class="col-sm-7">
+    <hr />
+    <div class="review-block" ng-repeat="review in reviews">
+      <div class="row">
+        <div class="col-sm-3">
+          <img src="/assets/avatar.png" class="img-rounded">
+          <div class="review-block-name">{{review.reviewer_name}}</div>
         </div>
-        
+        <div class="col-sm-9">
+          <div class="review-block-title"><b>{{review.review_title}}</b></div>
+          <div class="review-block-description">{{review.review_description}}</div>
+        </div>
+      </div>
+      <hr />
     </div>
-    
+    <div ng-show="!reviews.length">No Customer Review Yet!</div>
+    <hr />
+    <form ng-show="isSignedIn">
+      <div class="form-group">
+        <h4>Write your review</h4>
+        <hr />
+        <div ng-show="reviewSuccess" class="alert alert-dismissible alert-success">
+          Review added succesfully!
+        </div>
+        <label for="reviewTitle">Review Title</label>
+        <input type="text" class="form-control" id="reviewTitle" placeholder="Your overall experience" ng-model="review.review_title"
+          required>
+        <br />
+        <label for="exampleTextarea">Description</label>
+        <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Write more..." ng-model="review.review_description"
+          required></textarea>
+      </div>
+      <button type="submit" class="btn btn-outline-primary" ng-click="submitReview(review)">Submit</button>
+    </form>
+    <div ng-show="!isSignedIn">**Only customers can write reviews!</div>
+  </div>
 
-    <div class="modal" tabindex="-1" role="dialog" id="signInModal" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div ng-show = "!isSignedIn" class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="alert alert-dismissible alert-primary">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Oh Snap!</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>Only customers can buy or rent books. Please sign in or register.</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="go('/sign-in')">Sign In</button>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
+</div>
 
-            <div ng-show = "isSignedIn" class="modal-dialog" role="document">
-                <div class="modal-content">
-                 <div class="alert alert-dismissible alert-success">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Success</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div ng-if = "action == 'buy'" class="modal-body">
-                  
-                    <p>Thanks for shopping with us. This book will be shipped to your address within 3 business days. </p>
-                  </div>
-                  <div ng-if = "action == 'rent'" class="modal-body">
-                  
-                        <p>Thanks for renting the book. Your due date is a week from today. </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
+
+<div class="modal" tabindex="-1" role="dialog" id="signInModal" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div ng-show="!isSignedIn" class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="alert alert-dismissible alert-primary">
+        <h5 class="modal-title" id="exampleModalLongTitle">Oh Snap!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Only customers can buy or rent books. Please sign in or register.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="go('/sign-in')">Sign In</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
+  </div>
+
+  <div ng-show="isSignedIn" class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="alert alert-dismissible alert-success">
+        <h5 class="modal-title" id="exampleModalLongTitle">Success</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div ng-if="action == 'buy'" class="modal-body">
+
+        <p>Thanks for shopping with us. This book will be shipped to your address within 3 business days. </p>
+      </div>
+      <div ng-if="action == 'rent'" class="modal-body">
+
+        <p>Thanks for renting the book. Your due date is a week from today. </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

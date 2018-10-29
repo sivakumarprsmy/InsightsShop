@@ -13,6 +13,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', functio
 
   updateView();
 
+  // book search 
   $scope.search = function (search_param) {
     $location.path('/book-list');
 
@@ -21,13 +22,21 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', functio
     }
 
     $http.get('/api/books/' + search_param).then(function (response) {
-      $scope.books = response.data;
-      $scope.book = "";
-      console.log("inside search");
-      $scope.hideWelcomeBanner = true;
+      if (response.data.length > 0) {
+        $scope.books = response.data;
+        $scope.book = "";
+        console.log("inside search");
+        $scope.hideWelcomeBanner = true;
+        $scope.noResults = false;
+      }
+      else{
+        $scope.noResults = true;
+        //console.log('no resilts');
+      }
     });
   }
 
+  // book details 
   $scope.goToBookDetails = function (book) {
     $scope.reviewSuccess = false;
     $location.path('/book-details');
@@ -39,6 +48,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', functio
     });
   }
 
+  // sign in
   $scope.signIn = function (email, password) {
     $scope.showLoginError = false;
     $scope.registrationSuccess = false;
@@ -61,6 +71,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', functio
     });
   }
 
+  // sign out
   $scope.signOut = function () {
     $cookies.put('isSignedIn', false);
     $scope.isSignedIn = false;
@@ -68,6 +79,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', functio
   }
 
   $scope.showRegistrationForm = true;
+  // registration
   $scope.register = function (customer) {
     $http.post('/api/customer', customer).then(function (response) {
       if (response.data.msg != 'Failed to add customer') {
@@ -87,12 +99,21 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', functio
   
     }
   */
+ 
+  // search stores
   $scope.getStores = function (city) {
     if (angular.isUndefined(city)) {
       city = "";
     }
     $http.get('/api/stores/' + city).then(function (response) {
-      $scope.stores = response.data;
+      if(response.data.length > 0){
+        $scope.stores = response.data;
+        $scope.noStoresFound = false;
+      }
+      else{
+        $scope.noStoresFound = true;
+      }
+      
     });
 
   }
