@@ -8,7 +8,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', functio
     $location.path('/book-list');
 
     if (angular.isUndefined(search_param)) {
-      search_param = "";
+      search_param = " ";
     }
 
     $http.get('/api/books/' + search_param).then(function (response) {
@@ -48,9 +48,9 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', functio
           console.log("logged in");
           $cookies.put('isSignedIn', true);
           $scope.isSignedIn = true;
-          $location.path('/book-list');
           $scope.customerFirstName = response.data[0].first_name;
           $scope.customerLastName = response.data[0].last_name;
+          $scope.search("");
         }
         else {
           console.log("error");
@@ -64,7 +64,8 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', functio
   $scope.signOut = function () {
     $cookies.put('isSignedIn', false);
     $scope.isSignedIn = false;
-    $location.path('/book-list');
+    //$location.path('/book-list');
+    $scope.search("");
   }
 
   $scope.showRegistrationForm = true;
