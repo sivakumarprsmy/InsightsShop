@@ -7,11 +7,11 @@ const Customer = require('../models/customers');
 const Store = require('../models/stores');
 
 
-//search books without param
+//search books without param 
 router.get('/books', (req, res, next) => {
 	Book.find((err, books) => {
 		res.json(books);
-	});
+	}).sort('title');
 });
 
 //search book by different params- title, author, publisher, category, isbn
@@ -23,9 +23,9 @@ router.get('/books/:search_param', (req, res, next) => {
 			{publisher: new RegExp('.*'+req.params.search_param+'.*','i')},
 			{category: new RegExp('.*'+req.params.search_param+'.*','i')},
 			{isbn: new RegExp('.*'+req.params.search_param+'.*','i')}
-		]},(err, books) => {
+		]}, (err, books) => {
 		res.json(books);
-	});
+	}).sort('title');
 });
 
 // get book details
@@ -186,7 +186,7 @@ router.post('/review', (req, res, next) => {
 		title: req.body.title,
 		reviewer_name: req.body.reviewer_name,
 		review_title:req.body.review_title,
-		review_description: req.body.review_description,
+		review_description: req.body.review_description
 	});
 
 	newReview.save((err, review) => {
