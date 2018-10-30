@@ -43,7 +43,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', functio
     $scope.registrationSuccess = false;
     $http.get('/api/customer/' + email).then(function (response) {
 
-      if (response.data[0]) {
+      if (response.data.length > 0 && response.data[0]) {
         if (response.data[0].password == password) {
           console.log("logged in");
           $cookies.put('isSignedIn', true);
@@ -56,6 +56,10 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', functio
           console.log("error");
           $scope.showLoginError = true;
         }
+      }
+      else{
+        console.log("error");
+        $scope.showLoginError = true;
       }
     });
   }
