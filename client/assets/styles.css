@@ -6,6 +6,6 @@ footer {
 
 /* Google Map! */
 #map {
+    width: 100%;
     height: 500px;
-    width: 1110px;
-}
+    }
