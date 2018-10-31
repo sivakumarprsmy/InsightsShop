@@ -150,7 +150,8 @@ router.post('/store', (req, res, next) => {
 		state:req.body.state,
 		zip:req.body.zip,
 		country:req.body.country,
-		phone:req.body.phone
+		phone:req.body.phone,
+		location: req.body.location
 	});
 
 	newStore.save((err, store) => {

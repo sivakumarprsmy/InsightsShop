@@ -32,7 +32,15 @@ const StoreSchema = mongoose.Schema({
     phone:{
 		type: String,
 		required: true
+    },
+    location: {
+        type: [Number], 
+        required: true
     }
 });
 
+// Indexes this schema in geoJSON format
+StoreSchema.index({location: '2dsphere'});
+
+// Exports this schema
 const Store = module.exports = mongoose.model('Store', StoreSchema);
