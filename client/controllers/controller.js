@@ -20,6 +20,12 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', 'geoloc
       }
       else {
         $scope.noResults = true;
+        $http.get('/api/books/' + " ").then(function (response) {
+          if (response.data.length > 0) {
+            $scope.books = response.data;
+            $scope.book = "";
+          }
+        });
         //console.log('no resilts');
       }
     });
