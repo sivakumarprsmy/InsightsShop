@@ -264,26 +264,26 @@ myApp.factory('storeLocatorFactory', function ($rootScope, $http) {
 
     // Loop through all of the JSON entries provided in the response
     for (var i = 0; i < response.length; i++) {
-      var user = response[i];
+      var store = response[i];
 
       // Create popup windows for each record
-      var contentString = '<p><b>Address Line 1</b>: ' + user.addr_line_1 + '<br><b>Address Line 2</b>: ' + user.addr_line_2 + '<br>' +
-        '<b>City</b>: ' + user.city + '<br><b>State</b>: ' + user.state + '<br><b>Zip</b>: ' + user.zip + '<br><b>Country</b>: ' + user.country + '<br><b>Phone</b>: ' + user.phone + '</p>';
+      var contentString = '<p><b>Address Line 1</b>: ' + store.addr_line_1 + '<br><b>Address Line 2</b>: ' + store.addr_line_2 + '<br>' +
+        '<b>City</b>: ' + store.city + '<br><b>State</b>: ' + store.state + '<br><b>Zip</b>: ' + store.zip + '<br><b>Country</b>: ' + store.country + '<br><b>Phone</b>: ' + store.phone + '</p>';
 
       // Converts each of the JSON records into Google Maps Location format (Note Lat, Lng format).
       locations.push(new Location(
-        new google.maps.LatLng(user.location[1], user.location[0]),
+        new google.maps.LatLng(store.location[1], store.location[0]),
         new google.maps.InfoWindow({
           content: contentString,
           maxWidth: 320
         }),
-        user.addr_line_1,
-        user.addr_line_2,
-        user.city,
-        user.state,
-        user.zip,
-        user.country,
-        user.phone
+        store.addr_line_1,
+        store.addr_line_2,
+        store.city,
+        store.state,
+        store.zip,
+        store.country,
+        store.phone
       ))
     }
     // location is now an array populated with records in Google Maps format
@@ -299,7 +299,7 @@ myApp.factory('storeLocatorFactory', function ($rootScope, $http) {
     this.state = state;
     this.zip = zip;
     this.country = country;
-    this.phone = phone;
+    this.phone = phone
   };
 
   // Initializes the map
@@ -339,7 +339,7 @@ myApp.factory('storeLocatorFactory', function ($rootScope, $http) {
 
           // When clicked, open the selected marker's message
           currentSelectedMarker = n;
-          n.message.open(map, marker);
+          n.addr_line_1.open(map, marker);
         });
       });
 
