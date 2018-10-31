@@ -319,10 +319,10 @@ myApp.factory('storeLocatorFactory', function ($rootScope, $http) {
       }
       // If a filter was used set the icons yellow, otherwise blue
       if (filter) {
-        icon = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
+        icon = "https://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
       }
       else {
-        icon = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
+        icon = "https://maps.google.com/mapfiles/ms/icons/blue-dot.png";
       }
 
       // Loop through each location in the array and place a marker
@@ -349,7 +349,7 @@ myApp.factory('storeLocatorFactory', function ($rootScope, $http) {
         position: initialLocation,
         animation: google.maps.Animation.BOUNCE,
         map: map,
-        icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+        icon: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
       });
       lastMarker = marker;
 
@@ -362,7 +362,7 @@ myApp.factory('storeLocatorFactory', function ($rootScope, $http) {
           position: e.latLng,
           animation: google.maps.Animation.BOUNCE,
           map: map,
-          icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+          icon: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
         });
 
         // When a new spot is selected, delete the old red bouncing marker
