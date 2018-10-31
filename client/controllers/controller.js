@@ -120,10 +120,10 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$location', '$cookies', 'geoloc
 
   }
   
-  /*
+  
   $scope.go = function (path) {
     $location.path(path);
-  };*/
+  };
 
   // buy or rent action
   $scope.setAction = function (action) {
